@@ -1,11 +1,28 @@
 'use strict'
 const containerDiv = document.getElementById('container')
-const gifImage = document.getElementById('gifImage')
+
+
+const searchBtn = document.getElementById('searchBtn')
+
+let searchFor
+
+const getSearchInput = () => {
+    const searchInput = document.getElementById('searchInput')
+  return  searchFor = searchInput.value 
+}
+
+
+searchBtn.addEventListener('click', () => {
+    console.log(getSearchInput())
+    getSearchInput()  
+    loadNewImage()
+})
 
 let imageSrc
 
-
-fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=jumping', {
+const loadNewImage = () => {
+    const gifImage = document.getElementById('gifImage')
+    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=${searchFor}`, {
     mode: 'cors'
   })
 .then((res) => {
@@ -18,7 +35,7 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUT
 .catch((err) => {
     console.log('no this did not work')
 })
-
+}
 
 
 
@@ -35,7 +52,6 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUT
 //     }, 1500)
 // })
 
-
 // Promise.all([myPromise,myPromise2])
 // .then((data) => {
 //     console.log(data)
@@ -43,9 +59,6 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUT
 // .catch((err) => {
 //     console.log(err)
 // })
-
-
-
 
 
 //odin lesson
