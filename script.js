@@ -1,10 +1,18 @@
 'use strict'
 const containerDiv = document.getElementById('container')
+const gifImage = document.getElementById('gifImage')
 
-fetch('http://api.icndb.com/jokes/random/10')
+let imageSrc
+
+
+fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=jumping', {
+    mode: 'cors'
+  })
 .then((res) => {
     res.json().then((data) => {
-        console.log(data)
+        console.log(data.data.images.original.url)
+        imageSrc = data.data.images.original.url
+        gifImage.src = imageSrc
     })
 })
 .catch((err) => {
