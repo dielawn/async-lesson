@@ -2,108 +2,154 @@
 const containerDiv = document.getElementById('container')
 const span = document.querySelector('span')
 const textElement = document.createElement('p')
+const gifImage = document.getElementById('gifImage')
+// let searchFor
 
-let searchFor
+// const getSearchInput = () => {
+//     const searchInput = document.getElementById('searchInput')
+//     return  searchFor = searchInput.value 
+// }
 
-const getSearchInput = () => {
-    const searchInput = document.getElementById('searchInput')
-    return  searchFor = searchInput.value 
-}
-
-const searchBtn = document.getElementById('searchBtn')
-searchBtn.addEventListener('click', () => {
-    console.log(getSearchInput())
-    getSearchInput()  
-    loadNewImage()
-    logGiffys()
+// const searchBtn = document.getElementById('searchBtn')
+// searchBtn.addEventListener('click', () => {
+//     console.log(getSearchInput())
+//     getSearchInput()  
+//     loadNewImage()
+//     logGiffys()
     
-})
+// })
 
-let imageSrc
-let imageTitle
+// let imageSrc
+// let imageTitle
 
-const loadNewImage = () => {
-    const gifImage = document.getElementById('gifImage')
-    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=${searchFor}`, {
-    mode: 'cors'
-  })
-.then((res) => {
-    res.json().then((data) => {
-        console.log(data.data)
-        imageSrc = data.data.images.original.url
-        imageTitle = data.data.title
-        console.log(imageTitle)
+// const loadNewImage = () => {
+//     const gifImage = document.getElementById('gifImage')
+//     fetch(`https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=${searchFor}`, {
+//     mode: 'cors'
+//   })
+// .then((res) => {
+//     res.json().then((data) => {
+//         console.log(data.data)
+//         imageSrc = data.data.images.original.url
+//         imageTitle = data.data.title
+//         console.log(imageTitle)
 
-        gifImage.src = imageSrc
-        textElement.textContent = imageTitle
-    })
-})
-.catch((err) => {
-    console.log('no this did not work')
-})
-}
+//         gifImage.src = imageSrc
+//         textElement.textContent = imageTitle
+//     })
+// })
+// .catch((err) => {
+//     console.log('no this did not work')
+// })
+// }
 
-span.appendChild(textElement)
+// span.appendChild(textElement)
 
-const embededGifImg = document.getElementById('embedGif')
+// const embededGifImg = document.getElementById('embedGif')
 
-async function logGiffys() {
-    if (!searchFor) {
-        searchFor = 'search'
-    } 
-    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=${searchFor}`)
-    console.log(response.url)
-    const giffys = await response.json()
-    console.log(giffys.data.url)
-    const gifData = giffys.data
-    if (gifData && gifData.images && gifData.images.original && gifData.images.original && gifData.images.original.url) {
-        const embedGifUrl = gifData.images.original.url
-        embededGifImg.src = embedGifUrl
-    } else {
-        console.log('Invalid API response or URL not found')
-    }
+// async function logGiffys() {
+//     if (!searchFor) {
+//         searchFor = 'search'
+//     } 
+//     const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=${searchFor}`)
+//     console.log(response.url)
+//     const giffys = await response.json()
+//     console.log(giffys.data.url)
+//     const gifData = giffys.data
+//     if (gifData && gifData.images && gifData.images.original && gifData.images.original && gifData.images.original.url) {
+//         const embedGifUrl = gifData.images.original.url
+//         embededGifImg.src = embedGifUrl
+//     } else {
+//         console.log('Invalid API response or URL not found')
+//     }
     
-}
+// }
 
-logGiffys()
+// logGiffys()
 
-const server = {
-    people: [
-      {
-        name: "Odin",
-        age: 20,
-      },
-      {
-        name: "Thor",
-        age: 35,
-      },
-      {
-        name: "Freyja",
-        age: 29,
-      },
-    ],
+// const server = {
+//     people: [
+//       {
+//         name: "Odin",
+//         age: 20,
+//       },
+//       {
+//         name: "Thor",
+//         age: 35,
+//       },
+//       {
+//         name: "Freyja",
+//         age: 29,
+//       },
+//     ],
   
-    getPeople() {
-      return new Promise((resolve, reject) => {
-        // Simulating a delayed network call to the server
-        setTimeout(() => {
-          resolve(this.people);
-        }, 2000);
-      });
-    },
-  };
+//     getPeople() {
+//       return new Promise((resolve, reject) => {
+//         // Simulating a delayed network call to the server
+//         setTimeout(() => {
+//           resolve(this.people);
+//         }, 2000);
+//       });
+//     },
+//   };
 
-  async function getPersonsInfo(name) {
-    const people = await server.getPeople();
-    const person = people.find(person => { return person.name === name });
-    for (const person of people) {
-        console.log(person.name)
-    }
+//   async function getPersonsInfo(name) {
+//     const people = await server.getPeople();
+//     const person = people.find(person => { return person.name === name });
+//     for (const person of people) {
+//         console.log(person.name)
+//     }
     
-    return person;
-  }
+//     return person;
+//   }
 
-getPersonsInfo('Freyja')
+// getPersonsInfo('Freyja')
+
+
+// //scrim
+// let myPromise3 = new Promise((resolve, reject) => {
+//     let num = Math.floor(Math.random() * 10) +1
+//     console.log(num)
+//     if (num < 5) {
+//         resolve("You've guessed correctly!")
+//     } else {
+//         reject('Better luck next time...')
+//     }
+// })
+
+// function handleSuccess(goodNews) {
+//     console.log(goodNews)
+// }
+// function handleFailure(badNews) {
+//     console.log(badNews)
+// }
+// myPromise3.then(handleSuccess, handleFailure)
+
+// const randomResponse = async() => {
+//     let message = ''
+//     let num = Math.floor(Math.random() *10) + 1;
+//     console.log(num)
+//     if (num < 5) {
+//         message = await ('You got it dude!')
+//         console.log(message)
+//     } else {
+//         message = await ('No way Not this time...')
+//         console.log(message)
+//     }
+// }
+// randomResponse()
+
+// const arrayOfFruits = ['banana', 'strawberry', 'papaya']
+
+// arrayOfFruits.forEach(async fruit => {
+//     let message = `Would you like a ${fruit}?`
+//     console.log(message)
+// })
+
+
+
+
+
 // //handle multiple promises
 // let myPromise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -339,3 +385,12 @@ getPersonsInfo('Freyja')
 //     console.error(err)
 // }
 // )
+
+async function getCats() {
+    const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=OgByqKc6eOHLhIPmaUX8eaWUTPstl8DL&s=cats', {mode: 'cors'})
+    
+    const catData = await response.json()
+    gifImage.src = catData.data.images.original.url
+    
+}
+getCats()
